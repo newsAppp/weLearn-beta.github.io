@@ -390,6 +390,35 @@ $.postJSON = function(url, data, callback) {
 			$(".alertBox2").show();
 	});
 
+	
+
+	$("#try-form").on('click', function () {
+		try {
+			var imageString = "";
+			var file = document.querySelector('#logo').files[0];
+			var reader = new FileReader();
+	   		reader.readAsDataURL(file);
+	   		reader.onload = function () {
+			     console.log(reader.result);
+			     imageString = reader.result;
+			   };
+			reader.onerror = function (error) {
+			     console.log('Error: ', error);
+			   };			   
+			var subscriber = {
+				subject: "domainName: " + $("#domainName").val() + "platformName: " + $("#platformName").val() + ", email: " + $("#email").val(),
+				message: imageString
+			};
+			$.postJSON("https://ulearnsaas.azurewebsites.net/users", subscriber, function (data) {
+				console.log("chl Gaya");
+			});
+			$("#subscriber-email").val("");
+		} catch (error) {
+			console.log(error);
+		}
+		$(".alertBox2").show();
+	});
+
 	$("#popup1close").on("click", function(){
 		$(".popup1overlay").hide();
 	});
