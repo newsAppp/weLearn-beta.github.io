@@ -406,13 +406,19 @@ $.postJSON = function(url, data, callback) {
 			     console.log('Error: ', error);
 			   };			   
 			var subscriber = {
-				subject: "domainName: " + $("#domainName").val() + "platformName: " + $("#platformName").val() + ", email: " + $("#email").val(),
+				subject: "domainName: " + $("#domainName").val() 
+				+ "platformName: " + $("#platformName").val() 
+				+ ", email: " + $("#email").val()
+				+ ", phone: " + $("#phone").val(),
 				message: imageString
 			};
 			$.postJSON("https://ulearnsaas.azurewebsites.net/users", subscriber, function (data) {
 				console.log("chl Gaya");
 			});
-			$("#subscriber-email").val("");
+			$("#domainName").val("");
+			$("#platformName").val("");
+			$("#email").val("");
+			$("#phone").val("");
 		} catch (error) {
 			console.log(error);
 		}
