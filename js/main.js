@@ -337,19 +337,26 @@ jQuery(document).ready(function ($) {
 		return false;
 	});
 
-$.postJSON = function(url, data, callback) {
-    return jQuery.ajax({
-    headers: { 
-        'Accept': 'application/json',
-        'Content-Type': 'application/json' 
-    },
-    'type': 'POST',
-    'url': url,
-    'data': JSON.stringify(data),
-    'dataType': 'json',
-    'success': callback
-    });
-};
+	$.postJSON = function(url, data, callback) {
+		try
+		{
+			return jQuery.ajax({
+				headers: { 
+					'Accept': 'application/json',
+					'Content-Type': 'application/json' 
+				},
+				'type': 'POST',
+				'url': url,
+				'data': JSON.stringify(data),
+				'dataType': 'json',
+				'success': callback
+				});
+		}
+		catch(error)
+		{
+			console.log(error);
+		}
+	};
 
 	$("#contact-submit").on('click', function () {
 		try {
@@ -359,7 +366,7 @@ $.postJSON = function(url, data, callback) {
 				subject: $("#subject").val() + " " + $("#email").val(),
 				message: $("#message").val()
 			};
-			$.postJSON("https://ulearnsaas.azurewebsites.net/users", contactDetail, function (data) {
+			$.postJSON("https://ulearn-saas.azurewebsites.net/api/Leads?code=zkAMDs9daH7vXrZYAFGya/cUaJoykpGu7ja4xJ4YgGrhPAkjjOlXyg==", contactDetail, function (data) {
 				console.log("chl Gaya");
 			});
 			$("#fname").val("");
@@ -379,7 +386,7 @@ $.postJSON = function(url, data, callback) {
 				subject: "subscribe: " + $("#subscriber-email").val(),
 				message: $("#subscriber-email").val()
 			};
-			$.postJSON("https://ulearnsaas.azurewebsites.net/users", subscriber, function (data) {
+			$.postJSON("https://ulearn-saas.azurewebsites.net/api/Leads?code=zkAMDs9daH7vXrZYAFGya/cUaJoykpGu7ja4xJ4YgGrhPAkjjOlXyg==", subscriber, function (data) {
 				console.log("chl Gaya");
 			});
 			$("#subscriber-email").val("");
@@ -390,37 +397,23 @@ $.postJSON = function(url, data, callback) {
 			$(".alertBox2").show();
 	});
 
-	
-
-	$("#try-form").on('click', function () {
-		try {
-			var imageString = "";
-			var file = document.querySelector('#logo').files[0];
-			var reader = new FileReader();
-	   		reader.readAsDataURL(file);
-	   		reader.onload = function () {
-			     console.log(reader.result);
-			     imageString = reader.result;
-			   };
-			reader.onerror = function (error) {
-			     console.log('Error: ', error);
-			   };			   
-			var subscriber = {
-				subject: "domainName: " + $("#domainName").val() 
-				+ "platformName: " + $("#platformName").val() 
-				+ ", email: " + $("#email").val()
+	$("#contact-submit").on('click', function () {
+		try {			   
+			var tryData = {
+				subject: "fName: " + $("#domainName").val() 
+				+ ", lName: " + $("#platformName").val() 
+				+ ", email: " + $("#emailId").val()
 				+ ", phone: " + $("#phone").val(),
-				message: imageString
-			};
-			$.postJSON("https://ulearnsaas.azurewebsites.net/users", subscriber, function (data) {
-				console.log("chl Gaya");
+			};			
+			$.postJSON("https://ulearn-saas.azurewebsites.net/api/Leads?code=zkAMDs9daH7vXrZYAFGya/cUaJoykpGu7ja4xJ4YgGrhPAkjjOlXyg==", tryData, function (data) {
+				console.log("trailData sent");
 			});
 			$("#domainName").val("");
 			$("#platformName").val("");
-			$("#email").val("");
+			$("#emailId").val("");
 			$("#phone").val("");
 		} catch (error) {
-			console.log(error);
+			console.log("trail error: " + error);
 		}
 		$(".alertBox2").show();
 	});
