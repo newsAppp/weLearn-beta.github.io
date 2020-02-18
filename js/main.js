@@ -333,6 +333,9 @@ jQuery(document).ready(function ($) {
 		return false;
 	});
 
+	var hostURL = "http://localhost:7071/api/Leads";
+	// var hostURL = "https://ulearn-saas.azurewebsites.net/api/Leads";
+
 	$.postJSON = function(url, data, callback) {
 		try
 		{
@@ -357,12 +360,12 @@ jQuery(document).ready(function ($) {
 	$("#contact-submit").on('click', function () {
 		try {
 			var contactDetail = {
-				Firstname: $("#fname").val(),
-				Lastname: $("#lname").val(),
+				FirstName: $("#fname").val(),
+				LastName: $("#lname").val(),
 				Subject: $("#subject").val() + " " + $("#email").val(),
 				Message: $("#message").val()
 			};
-			$.postJSON("https://ulearn-saas.azurewebsites.net/api/Leads?code=zkAMDs9daH7vXrZYAFGya/cUaJoykpGu7ja4xJ4YgGrhPAkjjOlXyg==", contactDetail, function (data) {
+			$.postJSON(hostURL, contactDetail, function (data) {
 				console.log("chl Gaya");
 			});
 			$("#fname").val("");
@@ -382,7 +385,7 @@ jQuery(document).ready(function ($) {
 				Subject: "subscribe: " + $("#subscriber-email").val(),
 				Message: $("#subscriber-email").val()
 			};
-			$.postJSON("https://ulearn-saas.azurewebsites.net/api/Leads?code=zkAMDs9daH7vXrZYAFGya/cUaJoykpGu7ja4xJ4YgGrhPAkjjOlXyg==", subscriber, function (data) {
+			$.postJSON(hostURL, subscriber, function (data) {
 				console.log("chl Gaya");
 			});
 			$("#subscriber-email").val("");
@@ -396,12 +399,12 @@ jQuery(document).ready(function ($) {
 	$("#contact-submit").on('click', function () {
 		try {			   
 			var tryData = {
-				Subject: "FirstName: " + $("#domainName").val() 
-				+ ", LastName: " + $("#platformName").val() 
-				+ ", Email: " + $("#emailId").val()
+				Subject: "fName: " + $("#domainName").val() 
+				+ ", lName: " + $("#platformName").val() 
+				+ ", email: " + $("#emailId").val()
 				+ ", phone: " + $("#phone").val(),
 			};			
-			$.postJSON("https://ulearn-saas.azurewebsites.net/api/Leads?code=zkAMDs9daH7vXrZYAFGya/cUaJoykpGu7ja4xJ4YgGrhPAkjjOlXyg==", tryData, function (data) {
+			$.postJSON(hostURL, tryData, function (data) {
 				console.log("trailData sent");
 			});
 			$("#domainName").val("");
