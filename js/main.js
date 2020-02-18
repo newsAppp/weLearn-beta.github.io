@@ -357,10 +357,10 @@ jQuery(document).ready(function ($) {
 	$("#contact-submit").on('click', function () {
 		try {
 			var contactDetail = {
-				firstname: $("#fname").val(),
-				lastname: $("#lname").val(),
-				subject: $("#subject").val() + " " + $("#email").val(),
-				message: $("#message").val()
+				Firstname: $("#fname").val(),
+				Lastname: $("#lname").val(),
+				Subject: $("#subject").val() + " " + $("#email").val(),
+				Message: $("#message").val()
 			};
 			$.postJSON("https://ulearn-saas.azurewebsites.net/api/Leads?code=zkAMDs9daH7vXrZYAFGya/cUaJoykpGu7ja4xJ4YgGrhPAkjjOlXyg==", contactDetail, function (data) {
 				console.log("chl Gaya");
@@ -379,8 +379,8 @@ jQuery(document).ready(function ($) {
 	$("#button-addon2").on('click', function () {
 		try {
 			var subscriber = {
-				subject: "subscribe: " + $("#subscriber-email").val(),
-				message: $("#subscriber-email").val()
+				Subject: "subscribe: " + $("#subscriber-email").val(),
+				Message: $("#subscriber-email").val()
 			};
 			$.postJSON("https://ulearn-saas.azurewebsites.net/api/Leads?code=zkAMDs9daH7vXrZYAFGya/cUaJoykpGu7ja4xJ4YgGrhPAkjjOlXyg==", subscriber, function (data) {
 				console.log("chl Gaya");
@@ -396,9 +396,9 @@ jQuery(document).ready(function ($) {
 	$("#contact-submit").on('click', function () {
 		try {			   
 			var tryData = {
-				subject: "fName: " + $("#domainName").val() 
-				+ ", lName: " + $("#platformName").val() 
-				+ ", email: " + $("#emailId").val()
+				Subject: "FirstName: " + $("#domainName").val() 
+				+ ", LastName: " + $("#platformName").val() 
+				+ ", Email: " + $("#emailId").val()
 				+ ", phone: " + $("#phone").val(),
 			};			
 			$.postJSON("https://ulearn-saas.azurewebsites.net/api/Leads?code=zkAMDs9daH7vXrZYAFGya/cUaJoykpGu7ja4xJ4YgGrhPAkjjOlXyg==", tryData, function (data) {
