@@ -333,8 +333,8 @@ jQuery(document).ready(function ($) {
 		return false;
 	});
 
-	var hostURL = "http://localhost:7071/api/Leads";
-	// var hostURL = "https://ulearn-saas.azurewebsites.net/api/Leads";
+	// var hostURL = "http://localhost:7071/api/Leads";
+	var hostURL = "https://ulearn-saas.azurewebsites.net/api/Leads";
 
 	$.postJSON = function(url, data, callback) {
 		try
