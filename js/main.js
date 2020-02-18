@@ -379,44 +379,6 @@ jQuery(document).ready(function ($) {
 			$(".alertBox").show();
 	});
 
-	$("#button-addon2").on('click', function () {
-		try {
-			var subscriber = {
-				Subject: "subscribe: " + $("#subscriber-email").val(),
-				Message: $("#subscriber-email").val()
-			};
-			$.postJSON(hostURL, subscriber, function (data) {
-				console.log("chl Gaya");
-			});
-			$("#subscriber-email").val("");
-		} catch (error) {
-			console.log(error);
-		}
-
-			$(".alertBox2").show();
-	});
-
-	$("#contact-submit").on('click', function () {
-		try {			   
-			var tryData = {
-				Subject: "fName: " + $("#domainName").val() 
-				+ ", lName: " + $("#platformName").val() 
-				+ ", email: " + $("#emailId").val()
-				+ ", phone: " + $("#phone").val(),
-			};			
-			$.postJSON(hostURL, tryData, function (data) {
-				console.log("trailData sent");
-			});
-			$("#domainName").val("");
-			$("#platformName").val("");
-			$("#emailId").val("");
-			$("#phone").val("");
-		} catch (error) {
-			console.log("trail error: " + error);
-		}
-		$(".alertBox2").show();
-	});
-
 	$("#popup1close").on("click", function(){
 		$(".popup1overlay").hide();
 	});
